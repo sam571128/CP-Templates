@@ -1,10 +1,3 @@
-#include <bits/stdc++.h>
-
-#define int long long
-#define fastio ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-using namespace std;
-
 typedef complex<double> cp;
 
 const double pi = acos(-1);
@@ -60,16 +53,3 @@ struct FastFourierTransform{
 	void fft(vector<cp> &a){ transform(a,omega); }
 	void ifft(vector<cp> &a){ transform(a,iomega); for(int i = 0;i < n;i++) a[i] /= n;}
 } FFT;
-
-signed main(){
-	fastio
-	vector<cp> v{1,2}, v2{1,3};
-	int n = 4;
-	v.resize(n,0), v2.resize(n,0);
-	FFT.init(n);
-	FFT.fft(v);
-	FFT.fft(v2);
-	for(int i = 0;i < n;i++) v[i] *= v2[i];
-	FFT.ifft(v);
-	for(auto x : v) cout << x.real() << "\n";
-}

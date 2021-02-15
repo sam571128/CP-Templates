@@ -1,0 +1,8 @@
+.DS_Store
+*.exe
+*.aux
+*.log
+*.gz
+*.toc
+*.sh
+formula.pdf
