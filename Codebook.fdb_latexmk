@@ -1,9 +1,9 @@
 # Fdb version 3
-["xdvipdfmx"] 1619153196 "Codebook.xdv" "Codebook.pdf" "Codebook" 1619153197
-  "Codebook.xdv" 1619153196 298720 a0c3632bfe81989859c454c4abce1570 "xelatex"
+["xdvipdfmx"] 1619158418 "Codebook.xdv" "Codebook.pdf" "Codebook" 1619158419
+  "Codebook.xdv" 1619158418 384076 6a7a4a827b58e7ac3d774d8414814f40 "xelatex"
   (generated)
   "Codebook.pdf"
-["xelatex"] 1619153194 "Codebook.tex" "Codebook.xdv" "Codebook" 1619153197
+["xelatex"] 1619158415 "Codebook.tex" "Codebook.xdv" "Codebook" 1619158419
   "/home/sam/.miktex/texmfs/data/miktex/data/le/xetex/xelatex.fmt" 1616753473 22698660 b6228b36be6f8893ee0da80119087111 ""
   "/home/sam/.miktex/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1616461787 1004 54797486969f23fa377b128694d548df ""
   "/home/sam/.miktex/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1616461787 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -73,17 +73,21 @@
   "/home/sam/.miktex/texmfs/install/tex/xelatex/xecjk/xeCJK.cfg" 1616472937 408 1981e3b80ee2804b42048f88981cf6ef ""
   "/home/sam/.miktex/texmfs/install/tex/xelatex/xecjk/xeCJK.sty" 1616472937 180725 b63aab970a0b297a5ae2ef5421b881ec ""
   "/home/sam/.miktex/texmfs/install/tex/xelatex/xetexconfig/geometry.cfg" 1616472911 322 f4a6234bc28bf70659404393c15d3854 ""
-  "Codebook.aux" 1619153196 1331 9deb66e23aa1f1fd18f24e4a70fc9bc6 "xelatex"
+  "Codebook.aux" 1619158418 2203 51e3c91c5fc819785c6aca8d15298500 "xelatex"
   "Codebook.tex" 1619151880 3474 320ca99c502044d4d09003677ac9de76 ""
-  "Codebook.toc" 1619153196 465 bc410b8c826efa3cf8fa1bec17cb17b9 "xelatex"
+  "Codebook.toc" 1619158418 717 ef2efaaee928d1d5898ed37672d5b58d "xelatex"
   "Data Structure/Segment Tree.cpp" 1619152021 1484 6df830d1cd224b9ab6ce0afd88cdbcb6 ""
   "Data Structure/Treap.cpp" 1619151880 807 96623fe4e097c455b4d6529293471ddf ""
+  "Graphs/BCC_Edge.cpp" 1619158327 354 040dc297ea39d94f91f76a156113f65b ""
+  "Graphs/BCC_Vertex.cpp" 1619158282 852 e18abca1405f9ea7764e44b4b46c646c ""
+  "Graphs/SCC_korasaju.cpp" 1619158208 272 47f902cc8988afe0185edd577ecfa33b ""
+  "Graphs/SCC_tarjan.cpp" 1619158160 457 9cc52b15c1b5c5c55926d87dfb92cbed ""
   "Graphs/dijkstra.cpp" 1619151880 333 4e1f0e4a2131249a2d48cf3a0ec9a904 ""
   "Number Theory/FFT.cpp" 1619151880 1509 3c87ad3dc71942194ba172e1e2638064 ""
   "Number Theory/NTT.cpp" 1619151880 4116 622e3938e8c1ca5fa0e3b47ee2f0a52b ""
-  "list.tex" 1619152793 313 ae523de7b61a1ceda4012942a1e9648c ""
+  "list.tex" 1619158402 521 3f6d1c53fecd404cc609a78491847c93 ""
   (generated)
   "Codebook.toc"
-  "Codebook.aux"
-  "Codebook.xdv"
   "Codebook.log"
+  "Codebook.xdv"
+  "Codebook.aux"

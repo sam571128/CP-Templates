@@ -591,25 +591,49 @@ INPUT ./Data Structure/Treap.cpp
 INPUT Data Structure/Treap.cpp
 INPUT ./Data Structure/Treap.cpp
 INPUT Data Structure/Treap.cpp
+INPUT ./Graphs/BCC_Edge.cpp
+INPUT Graphs/BCC_Edge.cpp
+INPUT ./Graphs/BCC_Edge.cpp
+INPUT Graphs/BCC_Edge.cpp
+INPUT ./Graphs/BCC_Edge.cpp
+INPUT Graphs/BCC_Edge.cpp
+INPUT ./Graphs/BCC_Vertex.cpp
+INPUT Graphs/BCC_Vertex.cpp
+INPUT ./Graphs/BCC_Vertex.cpp
+INPUT Graphs/BCC_Vertex.cpp
+INPUT ./Graphs/BCC_Vertex.cpp
+INPUT Graphs/BCC_Vertex.cpp
 INPUT ./Graphs/dijkstra.cpp
 INPUT Graphs/dijkstra.cpp
 INPUT ./Graphs/dijkstra.cpp
 INPUT Graphs/dijkstra.cpp
 INPUT ./Graphs/dijkstra.cpp
 INPUT Graphs/dijkstra.cpp
-INPUT ./Number Theory/FFT.cpp
-INPUT Number Theory/FFT.cpp
-INPUT ./Number Theory/FFT.cpp
-INPUT Number Theory/FFT.cpp
-INPUT ./Number Theory/FFT.cpp
-INPUT Number Theory/FFT.cpp
-INPUT ./Number Theory/NTT.cpp
-INPUT Number Theory/NTT.cpp
-INPUT ./Number Theory/NTT.cpp
-INPUT Number Theory/NTT.cpp
-INPUT ./Number Theory/NTT.cpp
-INPUT Number Theory/NTT.cpp
+INPUT ./Graphs/SCC_korasaju.cpp
+INPUT Graphs/SCC_korasaju.cpp
+INPUT ./Graphs/SCC_korasaju.cpp
+INPUT Graphs/SCC_korasaju.cpp
+INPUT ./Graphs/SCC_korasaju.cpp
+INPUT Graphs/SCC_korasaju.cpp
+INPUT ./Graphs/SCC_tarjan.cpp
+INPUT Graphs/SCC_tarjan.cpp
+INPUT ./Graphs/SCC_tarjan.cpp
+INPUT Graphs/SCC_tarjan.cpp
+INPUT ./Graphs/SCC_tarjan.cpp
+INPUT Graphs/SCC_tarjan.cpp
 OUTPUT Codebook.xdv
+INPUT ./Number Theory/FFT.cpp
+INPUT Number Theory/FFT.cpp
+INPUT ./Number Theory/FFT.cpp
+INPUT Number Theory/FFT.cpp
+INPUT ./Number Theory/FFT.cpp
+INPUT Number Theory/FFT.cpp
+INPUT ./Number Theory/NTT.cpp
+INPUT Number Theory/NTT.cpp
+INPUT ./Number Theory/NTT.cpp
+INPUT Number Theory/NTT.cpp
+INPUT ./Number Theory/NTT.cpp
+INPUT Number Theory/NTT.cpp
 INPUT ./Codebook.toc
 INPUT Codebook.toc
 INPUT Codebook.toc
