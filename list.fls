@@ -1,0 +1,4 @@
+PWD /media/sam/Local Disk/CompetitiveProgramming/CP-Template/CP-Templates
+INPUT /home/sam/.miktex/texmfs/data/miktex/data/le/xetex/xelatex.fmt
+INPUT list.tex
+OUTPUT list.log

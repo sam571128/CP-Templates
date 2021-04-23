@@ -1,0 +1,12 @@
+# Fdb version 3
+["xdvipdfmx"] 0 "list.xdv" "list.pdf" "list" 0
+  "list.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "list.pdf"
+["xelatex"] 1619152570 "list.tex" "list.xdv" "list" 1619152571
+  "/home/sam/.miktex/texmfs/data/miktex/data/le/xetex/xelatex.fmt" 1616753473 22698660 b6228b36be6f8893ee0da80119087111 ""
+  "list.aux" 1619152570 8 a94a2480d3289e625eea47cd1b285758 ""
+  "list.tex" 1619152522 313 ae523de7b61a1ceda4012942a1e9648c ""
+  (generated)
+  "list.xdv"
+  "list.log"
