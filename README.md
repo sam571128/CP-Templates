@@ -7,7 +7,18 @@ sam571128's CP templates
 
 ## Graphs
 - Dijkstra
+- SCC(Tarjan)
+- SCC(Korasaju)
+- BCC(Edge)
+- BCC(Vertex)
 
 ## Number Theory
 - FFT
 - NTT
+- Linear Sieve
+
+## String
+- KMP
+- Z-Value
+- Aho Corasick Automaton
+- Suffix Array
