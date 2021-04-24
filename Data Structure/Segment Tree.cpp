@@ -28,7 +28,7 @@ struct SegT{
 	}
 
 	void modify(int ql, int qr, int val, int idx, int l, int r){
-	    if(l!=r) push(idx); //當節點並非葉節點時，下推標記
+	    if(l!=r) push(idx);
 	    if(ql <= l && r <= qr){
 	        tr[idx] = max(tr[idx],val);
 	        tag[idx] = max(tag[idx],val);
