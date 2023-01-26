@@ -70,9 +70,9 @@ bool intersect(point a, point b, point c, point d){
 }
 
 point intersect_point(point a, point b, point c, point d){
-    int adc = (d-a) ^ (c-a);
-    int bdc = (d-b) ^ (c-b);
-    return (a * bdc + b * adc) / (adc + bdc);
+    int abc = (b-a) ^ (c-a);
+    int abd = (b-a) ^ (d-a);
+    return (d * abc - c * abd) / (abc - abd);
 }
 
 point projection(point a, point b, point c){
