@@ -1,5 +1,4 @@
-const int N = 1e5+5, MOD = 998244353, G = 3;
- 
+const int MOD = 998244353, G = 3;
 int fastpow(int n, int p){
     int res = 1;
     while(p){
@@ -9,139 +8,70 @@ int fastpow(int n, int p){
     }
     return res;
 }
- 
-struct NTT{
-    int n, inv, rev[N];
-    int omega[N], iomega[N];
-    void init(int n_){
-        n = 1;
-        while(n < n_) n<<=1;
-        inv = fastpow(n,MOD-2);
-        int k = __lg(n);
-        int x = fastpow(G, (MOD-1)/n);
-        omega[0] = 1;
-        for(int i = 1;i < n;i++)
-            omega[i] = omega[i-1] * x % MOD;
-        iomega[n-1] = fastpow(omega[n-1],MOD-2);
-        for(int i = n-2; i >= 0; i--)
-            iomega[i] = iomega[i+1] * x % MOD;
-        for(int i = 0;i < n;i++){
-            int t = 0;
-            for(int j = 0;j < k;j++)
-                if(i&(1<<j)) t |= (1<<k-j-1);
-            rev[i] = t;
+
+int inv(int x){
+    return fastpow(x,MOD-2);
+}
+
+struct polynomial{
+    void fft(vector<int> &a, bool invert){
+        int n = a.size();
+
+        for(int i = 1, j = 0; i < n; i++){
+            int bit = n >> 1;
+            for (; j & bit; bit >>= 1)
+                j ^= bit;
+            j ^= bit;
+
+            if (i < j)
+                swap(a[i], a[j]);
         }
-    }
-    void transform(int *a, int *xomega){
-        for(int i = 0;i < n;i++)
-            if(i < rev[i]) swap(a[i],a[rev[i]]);
-        for(int len = 2;len <= n;len <<= 1){
-            int mid = len>>1;
-            int r = n/len;
-            for(int j = 0;j < n;j += len){
-                for(int i = 0;i < mid;i++){
-                    int tmp = xomega[r*i] * a[j+mid+i] % MOD;
-                    a[j+mid+i] = (a[j+i] - tmp + MOD) % MOD;
-                    a[j+i] = (a[j+i]+tmp)%MOD;
+
+        for (int len = 2; len <= n; len <<= 1) {
+            int k = len>>1;
+            int wn = fastpow(G,(MOD-1)/len);
+            for(int i = 0; i < n; i += len){
+                int w = 1;
+                for(int j = 0; j < k; j++){
+                    int u = a[i+j], v = a[i+j+k]*w % MOD;
+                    a[i+j] = (u+v)%MOD;
+                    a[i+j+k] = (u-v+MOD)%MOD;
+                    w *= wn; w %= MOD;
                 }
             }
         }
-    }
-    void dft(int *a){transform(a,omega);}
-    void idft(int *a){transform(a,iomega); for(int i = 0;i < n;i++) a[i] = a[i]*inv %MOD;}
- 
-    int tmp[8][N];
- 
-    void copy_(int *a, int *b, int m){
-        for(int i = 0;i < m;i++)
-            a[i] = b[i];
-        for(int i = m;i < n;i++)
-            a[i] = 0;
-    }
- 
-    void copy(int *a, int *b, int m){
-        for(int i = 0;i < m;i++)
-            a[i] = b[i];
-    }
- 
-    //B_{k+1} = B_k(2-AB_k) (mod MOD)
-    void inverse(int *a, int *b, int m){
-        //Uses tmp[0], tmp[1]
-        if(m==1){
-            b[0] = fastpow(a[0],MOD-2);
-            return;
+
+        if(invert){
+            reverse(a.begin()+1,a.begin()+n);
+            int n_1 = inv(n);
+            for(auto &x : a){
+                x = x * n_1 % MOD;
+            }
         }
-        inverse(a,b,m>>1);
-        init(m<<1);
-        copy_(tmp[0],a,m); copy_(tmp[1],b,m>>1);
-        dft(tmp[0]); dft(tmp[1]);
-        for(int i = 0;i < n;i++) tmp[0][i] = tmp[1][i]*(2-tmp[0][i]*tmp[1][i]%MOD+MOD)%MOD;
-        idft(tmp[0]);
-        copy(b,tmp[0],m);
     }
- 
     
-    //Q_{k+1} = pow(2,MOD-2)(Q_k + P*pow(Q_k,MOD-2)) (mod MOD)
-    void sqrt(int *a, int *b, int m){
-        //Uses tmp[2], tmp[3]
-        if(m==1){
-            b[0] = 1;
-            return;
+    vector<int> multiply(vector<int> const &a, vector<int> const &b){
+        vector<int> fa(a.begin(), a.end()), fb(b.begin(), b.end());
+        int n = 1;
+        while(n < a.size() + b.size()){
+            n <<= 1;
         }
-        sqrt(a,b,m>>1);
-        for(int i = m;i < m<<1;i++)
-            b[i] = 0;
-        inverse(b,tmp[2],m);
-        init(m<<1);
-        for(int i = m;i < m<<1;i++)
-            b[i] = tmp[2][i] = 0;
-        int inv2 = fastpow(2,MOD-2);
-        copy_(tmp[3],a,m);
-        dft(tmp[3]); dft(tmp[2]);
-        for(int i = 0;i < n;i++)
-            tmp[3][i] = tmp[3][i]*tmp[2][i]%MOD;
-        idft(tmp[3]);
-        for(int i = 0;i < m;i++)
-            b[i] = (b[i]+tmp[3][i])%MOD*inv2%MOD;
-    }
- 
-    void derivative(int *a, int *b, int m){
-        for(int i = 1;i < m;i++) b[i-1] = a[i]*i%MOD;
-        b[m-1] = 0;
-    }
- 
-    void integral(int *a, int *b, int m){
-        for(int i = m-1;i;i--) b[i] = a[i-1]*fastpow(i,MOD-2)%MOD;
-        b[0] = 0;
-    }
- 
-    void ln(int *a, int *b, int m){
-        //Uses tmp[4], tmp[5]
-        inverse(a,b,m);
-        derivative(a,tmp[5],m);
- 
-        init(m<<1);
-        copy_(tmp[4],b,m), copy_(tmp[5],tmp[5],m);
-        dft(tmp[4]), dft(tmp[5]);
-        for(int i = 0;i < m<<1;i++) tmp[4][i] = tmp[4][i]*tmp[5][i]%MOD;
-        idft(tmp[4]);
-        integral(tmp[4],b,m);
-    }
- 
-    void exp(int *a, int *b, int m){
-        //Uses tmp[6], tmp[7]
-        b[0] = 1;
-        for(int i = 4,j = 2;j <= m;j = i, i<<=1){
-            ln(b,tmp[6],j);
-            tmp[6][0] = (a[0]+1-tmp[6][0]+MOD)%MOD;
-            for(int k = 1; k < j;k++) tmp[6][k] = (a[k]-tmp[6][k]+MOD)%MOD;
-            
-            fill(tmp[6]+j,tmp[6]+i,0);
-            dft(b), dft(tmp[6]);
-            for(int k = 0; k < i;k++) b[k] = b[k]*tmp[6][k]%MOD;
-            idft(b);
-            fill(b+j,b+i,0);
+        fa.resize(n);
+        fb.resize(n);
+
+        fft(fa,false);
+        fft(fb,false);
+
+        for(int i = 0; i < n; i++){
+            fa[i] *= fb[i], fa[i] %= MOD;
         }
+        
+        fft(fa,true);
+
+        vector<int> result(n);
+        for(int i = 0; i < n; i++){
+            result[i] = fa[i];
+        }
+        return result;
     }
- 
-} NTT;
+} poly;
