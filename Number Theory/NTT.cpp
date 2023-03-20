@@ -72,6 +72,7 @@ struct polynomial{
         for(int i = 0; i < n; i++){
             result[i] = fa[i];
         }
+        result.resize(a.size()+b.size()-1);
         return result;
     }
 } poly;
