@@ -104,7 +104,6 @@ struct polynomial{
         while(n < (int)a.size())
             n <<= 1;
 
-
         vector<int> b; b.push_back(inv(a[0]));
         for(int len = 2; len <= n; len <<= 1){
             vector<int> tmp(a.begin(),a.begin()+len);
@@ -178,5 +177,49 @@ struct polynomial{
         }
         b.resize(a.size());
         return b;
+    }
+
+    vector<int> pow(vector<int> const &a, int k){
+        //Find the first term of a which is not zero
+        int n = a.size(), tmp = 0, idx = -1;
+        for(int i = 0; i < n; i++){
+            if(a[i]){
+                tmp = a[i];
+                idx = i;
+                break;
+            }
+        }
+    
+        if(idx == -1){
+            if(k==0){
+                vector<int> v(n,0);
+                v[0] = 1;
+                return v;
+            }else{
+                return a;
+            }
+        }
+
+        vector<int> t(a.begin()+idx,a.end());
+        for(int i = 0; i < (int)t.size(); i++){
+            t[i] *= inv(tmp), t[i] %= MOD;
+        }
+
+        t = ln(t);
+
+        for(int i = 0; i < (int)t.size(); i++){
+            t[i] *= k, t[i] %= MOD;
+        }
+
+        t = exp(t);
+
+        vector<int> res(n); int powa = fastpow(tmp,k);
+        for(int i = 0; i < (int)t.size(); i++){
+            if(i+k*idx < n){
+                res[i+k*idx] = t[i] * powa % MOD;
+            }
+        }
+        
+        return res;
     }
 } poly;
