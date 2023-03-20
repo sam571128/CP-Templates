@@ -189,7 +189,7 @@ struct polynomial{
                 break;
             }
         }
-    
+
         if(idx == -1){
             if(k==0){
                 vector<int> v(n,0);
@@ -200,22 +200,28 @@ struct polynomial{
             }
         }
 
+        if(idx != 0 && k > n){
+            return vector<int>(n,0);
+        }
+
+        int invt = inv(tmp);
+
         vector<int> t(a.begin()+idx,a.end());
         for(int i = 0; i < (int)t.size(); i++){
-            t[i] *= inv(tmp), t[i] %= MOD;
+            t[i] *= invt, t[i] %= MOD;
         }
 
         t = ln(t);
 
         for(int i = 0; i < (int)t.size(); i++){
-            t[i] *= k, t[i] %= MOD;
+            t[i] *= (k%MOD), t[i] %= MOD;
         }
 
         t = exp(t);
 
-        vector<int> res(n); int powa = fastpow(tmp,k);
+        vector<int> res(n); int powa = fastpow(tmp,k%(MOD-1));
         for(int i = 0; i < (int)t.size(); i++){
-            if(i+k*idx < n){
+            if(i+(__int128) k*idx < n){
                 res[i+k*idx] = t[i] * powa % MOD;
             }
         }
